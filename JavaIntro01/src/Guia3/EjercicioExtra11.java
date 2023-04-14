@@ -16,17 +16,16 @@ public class EjercicioExtra11 {
 
     public static void main(String[] args) {
         // TODO code application logic here
-        int num;
+        long num;
         int contador = 0;
         Scanner leer = new Scanner(System.in);
-        System.out.println("Ingrese un nuemro entero:");
-        num = leer.nextInt();
+        System.out.println("Ingrese un numero entero:");
+        num = leer.nextLong();
 
-        for (int i = num; i < 0; i++) {
-            num = num / 10;
-            contador = contador + 1;
-        }
-
+        do {
+             num = num / 10;
+            contador++;
+        } while (num>0);
         
 
         System.out.println("El numero ingresado tiene " + contador + " cifras ");
