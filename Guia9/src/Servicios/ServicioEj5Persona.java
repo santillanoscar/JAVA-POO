@@ -56,12 +56,12 @@ public class ServicioEj5Persona {
         return edad;
     }
     
-    public boolean menorQue(Ej5Persona p1) {
+    public boolean menorQue(Ej5Persona p1 ,int Edad) {
         //Método menorQue recibe como parámetro una Persona y una edad. Retorna true 
         //si la persona es menor que la edad consultada o false en caso contrario.
-        System.out.println("Ingrese la edad a comparar: ");
-        int Edad2 = leer.nextInt();
-        if (calcularEdad(p1) < Edad2) {
+        //System.out.println("Ingrese la edad a comparar: ");
+        //int Edad2 = leer.nextInt();
+        if (calcularEdad(p1) <= Edad) {
             return true;
         } else {
             return false;
@@ -76,9 +76,7 @@ public class ServicioEj5Persona {
         System.out.println(" Nombre : "+p1.getNombre());
         System.out.println(" Fecha de nacimiento: " + fecha);
         System.out.println(" Edad: "+ calcularEdad(p1));
-        
-    
-    
+  
     
 }
 }

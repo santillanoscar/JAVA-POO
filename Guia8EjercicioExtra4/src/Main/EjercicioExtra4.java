@@ -12,8 +12,7 @@ public class EjercicioExtra4 {
         ServicioPass sp = new ServicioPass();
         Pass p1 = new Pass();
         
-        sp.
-        
+              
         
         
         
