@@ -50,39 +50,33 @@ public class ServicioPerro {
     }
     
     public void buscarEliminarPerros() {
-        /*Continuando el ejercicio anterior, después de mostrar los perros, al usuario se le pedirá
-un perro y se recorrerá la lista con un Iterator, se buscará el perro en la lista. Si el perro
-está en la lista, se eliminará el perro que ingresó el usuario y se mostrará la lista
-ordenada. Si el perro no se encuentra en la lista, se le informará al usuario y se mostrará
-la lista ordenada.*/
+        
         System.out.println("Ingrese la raza de perro que desea Eliminar");
         String elimina = leer.next();
-        boolean noEsta=false;
+        boolean noEsta = false;
 
         Iterator<String> it = perrosArrayList.iterator();
-        
+
         while (it.hasNext()) {
             String aux = it.next();
             if (aux.equals(elimina)) {
                 it.remove();
-                System.out.println("La raza "+elimina+" fue eliminada");
+                System.out.println("La raza " + elimina + " fue eliminada");
                 System.out.println("----------------------------------");
-                noEsta=true;
+                noEsta = true;
             }
-
         }
-        
+
         if (!noEsta) {
             System.out.println("La raza ingresada no esta en el ArrayList ");
             System.out.println("------------------------------------------");
         } else {
             System.out.println("Las razas de perros del ArrayList son: ");
             Collections.sort(perrosArrayList);
-           
-        
+
             for (String aux : perrosArrayList) {
-            System.out.println("*- "+ aux);
-        }
+                System.out.println("*- " + aux);
+            }
         }
     }
 }
