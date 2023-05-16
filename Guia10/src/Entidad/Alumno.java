@@ -18,7 +18,7 @@ public class Alumno {
 
     public Alumno(String nombre, ArrayList<Integer> notas) {
         this.nombre = nombre;
-        this.notas = notas;
+        this.notas = new ArrayList<>(3);
     }
 
     public String getNombre() {

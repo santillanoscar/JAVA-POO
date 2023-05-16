@@ -18,6 +18,8 @@ public class Ejercicio3 {
         ServicioAlumno sa = new ServicioAlumno();
         
         sa.cargarAlumno();
+        sa.mostrarAlumnoNotas();
+        sa.notaFinal();
     }
     
 }
