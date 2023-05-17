@@ -16,7 +16,6 @@ promedio final, devuelto por el método y mostrado en el main.
  * @author osantillan
  */
 public class ServicioAlumno {
-    
     Scanner leer = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n");
     ArrayList <Alumno> listaAlumnos = new ArrayList<>(); // lista de alumnos
     

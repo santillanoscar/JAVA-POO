@@ -5,22 +5,23 @@
  */
 package Main;
 
-import Servicio.ServicioAlumno;
+import Servicio.ServicioPerro;
 
 /**
  *
- * @author Flia-Santillan
+ * @author osantillan
  */
-public class Ejercicio3 {
+public class Ejercicio1y2 {
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Servicio.ServicioPerro sp = new ServicioPerro();
         
-        Servicio.ServicioAlumno sa = new ServicioAlumno();
+        sp.cargarPerro();
+        sp.buscarEliminarPerros();
         
-        sa.cargarAlumno();
-        sa.mostrarAlumnoNotas();
-        sa.notaFinal();
     }
     
 }
