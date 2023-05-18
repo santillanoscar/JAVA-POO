@@ -2,6 +2,7 @@ package Servicio;
 
 import Entidad.Tienda;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -43,16 +44,72 @@ public class ServicioTienda {
             String nombProducto = entry.getKey();
             Integer precio = entry.getValue();
             
-            System.out.println("Producto: " + entry.getKey() + "\n"
-                             + "Precio  : " + entry.getValue());
+            System.out.println("Producto: " + entry.getKey() + " Precio  : " + entry.getValue());
             
         }
         System.out.println("");
     }
     
-    public void eliminarProducto(){
-    
+    public void eliminarProducto() {
+        String opcion;
+        boolean encontrado = false;
+        do {
+            System.out.println("Ingrese nombre del producto que desee Eliminar");
+            String elimina = leer.next();
+            //RECORRE EL MAPA CON UN FOR
+            for (Map.Entry<String, Integer> entry : listaProductos.entrySet()) { 
+                String llave = entry.getKey();
+                Integer valor = entry.getValue();
+                //SI LO ENCUENTRA, LO ELIMINA, VARIABLE ENCONTRADO PASA A VERDADERO Y SALE CON EL BREAK
+                if (llave.equalsIgnoreCase(elimina)) {
+                    System.out.println("Se elimino el producto '" + llave+"'");
+                    encontrado = true;
+                    listaProductos.remove(llave, valor);
+                    break;
+                }
+            }
+            // SINO ENCONTRO EL PRODUCTO
+            if (!encontrado) {
+                System.out.println("El producto NO fue encontrado");
+            }
+
+            System.out.println("Desea Eliminar otro producto? (S/N)");
+            opcion = leer.next();
+        } while (opcion.equalsIgnoreCase("S"));
+    }
+       
+    public void modificarProducto(){
+    String opcion;
+        boolean encontrado = false;
+        do {
+            System.out.println("Ingrese nombre del producto que desee MODIFICAR su PRECIO");
+            String elimina = leer.next();
+            //RECORRE EL MAPA CON UN FOR
+            for (Map.Entry<String, Integer> entry : listaProductos.entrySet()) { 
+                String llave = entry.getKey();
+                Integer valor = entry.getValue();
+                //SI LO ENCUENTRA, PIDE EL NUEVO PRECIO, LO MODIFICA CON REPLACE
+                //VARIABLE ENCONTRADO PASA A VERDADERO Y SALE CON EL BREAK
+                if (llave.equalsIgnoreCase(elimina)) {
+                    System.out.println("Ingrese NUEVO PRECIO del producto");
+                    int nuevoPrecio=leer.nextInt();
+                    System.out.println("Se modifico el precio del producto '" + llave+"'");
+                    encontrado = true;
+                    listaProductos.replace(llave, nuevoPrecio);
+                    break;
+                }
+            }
+            // SINO ENCONTRO EL PRODUCTO
+            if (!encontrado) {
+                System.out.println("El producto NO fue encontrado");
+            }
+
+            System.out.println("Desea Modificar PRECIO de otro producto? (S/N)");
+            opcion = leer.next();
+        } while (opcion.equalsIgnoreCase("S"));
+       
+    }
     
     }
 
-}
+

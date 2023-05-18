@@ -16,9 +16,6 @@ Realizar un menú para lograr todas las acciones previamente mencionadas.
  */
 public class Ejercicio6 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner leer = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n");
@@ -41,10 +38,10 @@ public class Ejercicio6 {
                     st.cargarProducto();
                     break;
                 case 2:
-                    System.out.println("Modificar Productos");
+                    st.modificarProducto();
                     break;
                 case 3:
-                    System.out.println("Eliminar Productos");
+                    st.eliminarProducto();
                     break;
                 case 4:
                     st.mostrarProductos();
