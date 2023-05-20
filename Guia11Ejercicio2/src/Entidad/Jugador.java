@@ -48,8 +48,31 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return "Jugador{" + "id=" + id + ", nombre=" + nombre + ", mojado=" + mojado + '}';
+        return "Jugador{" + " nombre=" + nombre +" " +id+", mojado=" + mojado + '}';
     }
+
+    
+    
+    public boolean disparo(Revolver r1) {
+//        Métodos: disparo(Revolver r): el método, recibe el revolver de agua y llama a los métodos de
+//mojar() y siguienteChorro() de Revolver. El jugador se apunta, aprieta el gatillo y si el
+//revolver tira el agua, el jugador se moja. El atributo mojado pasa a false y el método
+//devuelve true, sino false.
+        System.out.println("*** metodo disparo ****");
+
+        r1.llenarRevolver();
+        
+        if (r1.mojar()) {
+            System.out.println("El jugador se ha mojado");
+            return true;
+        } else {
+            System.out.println("El jugador NO se ha mojado");
+            System.out.println("Pasa al siguiente Jugador");
+            r1.siguientechorro();
+            return false;
+        }
+    }
+    
     
     
 }
