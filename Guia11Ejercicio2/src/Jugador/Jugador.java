@@ -7,16 +7,10 @@ import Revolver.Revolver;
 jugador), nombre (Empezara con Jugador más su ID, “Jugador 1” por ejemplo) y mojado (indica
 si está mojado o no el jugador). El número de jugadores será decidido por el usuario, pero
 debe ser entre 1 y 6. Si no está en este rango, por defecto será 6.
-Métodos:
-• disparo(Revolver r): el método, recibe el revolver de agua y llama a los métodos de
-mojar() y siguienteChorro() de Revolver. El jugador se apunta, aprieta el gatillo y si el
-revolver tira el agua, el jugador se moja. El atributo mojado pasa a false y el método
-devuelve true, sino false.
 * 
- * @author Flia. SANTILLAN
+ * @author Flia-Santillan
  */
 public class Jugador {
-    
     private int id;
     private String nombre;
     private boolean mojado;
@@ -26,8 +20,8 @@ public class Jugador {
 
     public Jugador(int id, String nombre, boolean mojado) {
         this.id = id;
-        this.nombre = "Jugador" + id;
-        this.mojado = false;
+        this.nombre = nombre;
+        this.mojado = mojado;
     }
 
     public int getId() {
@@ -37,7 +31,6 @@ public class Jugador {
     public void setId(int id) {
         this.id = id;
     }
-    
 
     public String getNombre() {
         return nombre;
@@ -57,21 +50,27 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return "Jugador{" + ", nombre=" + nombre + " "+ id + ", mojado=" + mojado + '}';
+        return  nombre +" " +id;
     }
     
-    public boolean disparo(Revolver r){
-//     disparo(Revolver r): el método, recibe el revolver de agua y llama a los métodos de
+    public void disparo(Revolver r1) {
+//        Métodos: disparo(Revolver r): el método, recibe el revolver de agua y llama a los métodos de
 //mojar() y siguienteChorro() de Revolver. El jugador se apunta, aprieta el gatillo y si el
 //revolver tira el agua, el jugador se moja. El atributo mojado pasa a false y el método
 //devuelve true, sino false.
-    
-        if (r.mojar()) {
+        System.out.println("El jugador se apunta y dispara !!!");
+        System.out.println("****      PUUUMMMM !!!!       ****");
+        
+        if (r1.mojar()) {
+            System.out.println("El jugador se ha Mojado");
+            System.out.println("*** HA PERDIDO !!! ****");
             mojado=true;
-            return true;
         } else {
-             r.siguienteChorro();
-            return false;
+            System.out.println("El jugador NO se ha mojado");
+            System.out.println("Pasa al siguiente Jugador");
+            System.out.println("");
+            r1.siguientechorro();
         }
-    }    
+    }
+ 
 }

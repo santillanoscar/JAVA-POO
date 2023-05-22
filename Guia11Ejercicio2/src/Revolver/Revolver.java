@@ -1,4 +1,4 @@
-package Entidad;
+package Revolver;
 
 /**
  *Realizar el juego de la ruleta rusa de agua en Java. Como muchos saben, el juego se trata de
@@ -50,29 +50,25 @@ public class Revolver {
     public void llenarRevolver(){
         // llenarRevolver(): le pone los valores de posición actual y de posición del agua. Los valores
         //deben ser aleatorios.
-        System.out.println("**** metodo llenar Revolver*****");
-        setPosicionActual((int) (Math.random() * 6 + 1));
-        setPosicionAgua((int) (Math.random() * 6 + 1));
+        posicionActual=((int) (Math.random() * 6 + 1));
+        posicionAgua=((int) (Math.random() * 6 + 1));
         System.out.println("Posicion Actual "+getPosicionActual());
         System.out.println("Posicion Agua "+getPosicionAgua());
+        System.out.println("");
     }
 
     public boolean mojar() {
         //mojar(): devuelve true si la posición del agua coincide con la posición actual
-        System.out.println("****metodo mojar****");
-        return getPosicionActual() == getPosicionAgua();
+        return posicionActual == posicionAgua;
     }
     
     public void siguientechorro(){
         //siguienteChorro(): cambia a la siguiente posición del tambor
-        System.out.println("***metodo siguiente chorro****");
-        if (getPosicionActual()==6) {
-            setPosicionActual(1);
-            System.out.println(" *era 6* Posicion Actual siguiente del agua "+getPosicionActual());
+        if (posicionActual==6) {
+            posicionActual=1;
         } else {
-            setPosicionActual(getPosicionActual()+1);
-             System.out.println(" *else* Posicion Actual siguiente del agua "+getPosicionActual());
+            posicionActual++;
         } 
-       
     }
+    
 }

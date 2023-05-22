@@ -1,15 +1,16 @@
 
-package Entidad;
+package Juego;
 
+import Jugador.Jugador;
+import Revolver.Revolver;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Scanner;
 
 /**
  Clase Juego: esta clase posee los siguientes atributos: Jugadores (conjunto de Jugadores) y
 Revolver
 Métodos:
-• llenarJuego(ArrayList<Jugador>jugadores, Revolver r): este método recibe los jugadores
+// llenarJuego(ArrayList Jugador> jugadores, Revolver r): este método recibe los jugadores
 y el revolver para guardarlos en los atributos del juego.
 
 10
@@ -22,8 +23,8 @@ mojar. Al final del juego, se debe mostrar que jugador se mojó.
  */
 public class Juego {
     
-    private ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
-    private Revolver r1;
+    private ArrayList<Jugador> listaJugadores = new ArrayList();
+    private Revolver r1 = new Revolver();
 
     public Juego() {
     }
@@ -55,23 +56,29 @@ public class Juego {
     
     Scanner leer = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n");
     
-    public void llenarJuego(ArrayList<Jugador>listaJugadores, Revolver r){
+    public void llenarJuego(){
 //    llenarJuego(ArrayList<Jugador>jugadores, Revolver r): este método recibe los jugadores
 //y el revolver para guardarlos en los atributos del juego.
-        System.out.println("**** metodo llenar Juego**** ");
+              
         System.out.println("Ingrese cantidad de Jugadores (1 a 6):");
         int cantJugadores=leer.nextInt();
-        
-        for (int i = 0; i < cantJugadores; i++) {
+       
+        for (int i = 1; i <= cantJugadores; i++) {
             
-            Jugador j1 = new Jugador((i+1), "Jugador", false);
+            Jugador j1 = new Jugador();
+            
+            j1.setId(i);
+            j1.setNombre("Jugador");
+            j1.setMojado(false);
+            
             listaJugadores.add(j1);
         }
-        for (Jugador aux : listaJugadores) {
-            System.out.println(aux);
+        for (int i = 0; i < listaJugadores.size(); i++) {
+            Jugador jugador = listaJugadores.get(i);
+            System.out.println(jugador);
         }
-        this.r1 = new Revolver(); // Asigna la instancia de Revolver al atributo r1 de la clase Juego
-        this.r1.llenarRevolver(); // prepara 1 Revolver
+        r1.llenarRevolver(); // prepara 1 Revolver
+   
     }
     
     public void ronda(){
@@ -80,15 +87,29 @@ public class Juego {
 //aprieta el gatillo. Sí el revolver tira el agua el jugador se moja y se termina el juego, sino se
 //moja, se pasa al siguiente jugador hasta que uno se moje. Si o si alguien se tiene que
 //mojar. Al final del juego, se debe mostrar que jugador se mojó.
-        System.out.println("*** metodo ronda****");
-        
-        llenarJuego(listaJugadores, r1);
-              
-        for (Jugador aux : listaJugadores) {
+        boolean estaMojado=false;
+      
+        int contador=1;
+        for (Jugador jugador : listaJugadores) {
             
-            aux.disparo(r1);
+            System.out.println("RONDA "+contador);
+            System.out.println(jugador);
+            jugador.disparo(r1);            
+            contador++;
             
+            if (jugador.isMojado()) {
+                estaMojado=true;
+                break;
+            }
+        }
+        if (estaMojado) {
+            System.out.println(" FIN DEL JUEGO !!!");
+            System.out.println("");
+        }else{
+            System.out.println("Nadie se ha mojado");
+            System.out.println("");
+            System.out.println("Nueva ronda !!!");
+            ronda();
         }
     }
-    
 }
