@@ -1,8 +1,8 @@
 
 package guia11ejercicio1;
 
-import Entidad.Perro;
-import Entidad.Persona;
+import Perro.Perro;
+import Persona.Persona;
 import java.util.Scanner;
 
 /**

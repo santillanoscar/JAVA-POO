@@ -1,5 +1,7 @@
 
-package Entidad;
+package Persona;
+
+import Perro.Perro;
 
 /**
  *Realizar un programa para que una Persona pueda adoptar un Perro. Vamos a contar de dos
