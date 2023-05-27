@@ -35,6 +35,13 @@ public class Persona {
         this.p1 = p1;
     }
 
+    public Persona(String nombre, String apellido, int documento) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.documento = documento;
+    }
+    
+
     public String getNombre() {
         return nombre;
     }

@@ -34,6 +34,14 @@ public class Perro {
         this.tamanio = tamanio;
         this.dueño = dueño;
     }
+
+    public Perro(String nombre, String raza, int edad, String tamanio) {
+        this.nombre = nombre;
+        this.raza = raza;
+        this.edad = edad;
+        this.tamanio = tamanio;
+    }
+    
  
     public String getNombre() {
         return nombre;
