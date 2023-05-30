@@ -57,32 +57,5 @@ public class Espectador {
         return "Espectador{" + "nombre=" + nombre + ", edad=" + edad + ", dinero=" + dinero + '}';
     }
     
-    public void crearEspectadores() {
-        Scanner leer = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n");
-        ArrayList <Espectador> listaEspectadores = new ArrayList();
-        int cant;
-        System.out.println("Ingrese cantidad de espectadores (Max. 48)");
-        do {
-            
-            cant = leer.nextInt();
-            if (cant <= 48) {
-                for (int i = 0; i < cant; i++) {
-                    int edad = (int) (Math.random() * 99 + 1);
-                    double dinero = (double) Math.round(Math.random() * 100000 + 1)/100;
-                    Espectador e1 = new Espectador("Persona*" + (i + 1), edad, dinero);
-                    listaEspectadores.add(e1);
-                }
-            } else {
-                System.out.println("Ingrese una cantidad de espectadores\n"
-                        + "entre 1 y 48 por favor");
-            }
-        } while (cant > 48);
-        
-        for (Object listaEspectadore : listaEspectadores) {
-            System.out.println(listaEspectadore);
-        }
-        
-
-    }
-
+    
 }
