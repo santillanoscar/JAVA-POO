@@ -16,18 +16,16 @@ public class Cine {
     private Pelicula peli;
     private String [][] salaCine;
     private double precioEntrada;
+    
 
     public Cine() {
-    }
-
-    public Cine(String[][] salaCine) {
-        this.salaCine = salaCine;
     }
 
     public Cine(Pelicula peli, String[][] salaCine, double precioEntrada) {
         this.peli = peli;
         this.salaCine = salaCine;
         this.precioEntrada = precioEntrada;
+        
     }
 
     public Pelicula getPeli() {
@@ -54,12 +52,13 @@ public class Cine {
         this.precioEntrada = precioEntrada;
     }
 
+   
+
     @Override
     public String toString() {
         return "Cine{" + "peli=" + peli + ", salaCine=" + salaCine + ", precioEntrada=" + precioEntrada + '}';
     }
 
-   
     
     
     

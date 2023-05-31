@@ -67,21 +67,5 @@ public class Pelicula {
     public String toString() {
         return "Titulo=" + titulo + ", duracionEnMinutos=" + duracionEnMinutos + ", edadMinima=" + edadMinima + ", director=" + director + '}'+"\n";
     }
-     /*
-    public void creaPelicula(){
-        Scanner leer = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n");
-        System.out.println("Ingrese Titulo de la Pelicula");
-        setTitulo(leer.next());
-        System.out.println("Ingrese Duracion de la Pelicula (en minutos)");
-        setDuracionEnMinutos(leer.nextInt());
-        System.out.println("Ingrese Edad minima permitida");
-        setEdadMinima(leer.nextInt());
-        System.out.println("Ingrese Director de la Pelicula");
-        setDirector(leer.next());
-              
-    }
-    public void mostrarPelicula(){
-        System.out.println(toString());
     
-    }*/
 }

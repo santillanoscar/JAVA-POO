@@ -40,12 +40,10 @@ public class Guia11EjercicioExtra2 {
     public static void main(String[] args) {
         ServicioCine sc = new ServicioCine();
        
-        sc.cargarEspectadores();
+        
         sc.cargarPelicula();
         sc.crearSalaCine();
-        
-        
-      
+        sc.ubicarEspectadores();
         
         
         
