@@ -19,35 +19,22 @@ import java.util.Scanner;
 public class ServicioCine {
     
     Scanner leer = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n");
-    ArrayList<Espectador> listaEspectadores;
+    ArrayList<Espectador> listaEspectadores = new ArrayList(); 
     Pelicula p;
-    Cine c1;
+    Cine c1 = new Cine();
     
     public void cargarEspectadores() {
         System.out.println("*** Cargar Espectadores ***");
-               
-        listaEspectadores = new ArrayList(); 
-        int cant;
-        System.out.println("Ingrese cantidad de espectadores (Max. 48)");
-        do {
-
-            cant = leer.nextInt();
-            if (cant <= 48) {
+                
+        System.out.println("Ingrese cantidad de espectadores (Capacidad Max. 48 personas)");
+        int cant = leer.nextInt();
+            
                 for (int i = 0; i < cant; i++) {
                     int edad = (int) (Math.random() * 99 + 1);
                     double dinero = (double) Math.round(Math.random() * 100000 + 1) / 100;
                     Espectador e1 = new Espectador("Persona*" + (i + 1), edad, dinero);
                     listaEspectadores.add(e1);
-                }
-            } else {
-                System.out.println("Ingrese una cantidad de espectadores\n"
-                        + "entre 1 y 48 por favor");
-            }
-        } while (cant > 48);
-        // MOSTRAR ESPECTADORES
-        //for (Object listaEspectadore : listaEspectadores) {
-          //  System.out.println(listaEspectadore);
-        //}
+                }           
     }
     
     public void cargarPelicula() {
@@ -66,151 +53,112 @@ public class ServicioCine {
     }
 
     public void crearSalaCine() {
-        c1 = new Cine();
+        cargarPelicula();
+        
+        System.out.println(" *** Sala Cine Vacio *** ");
+        System.out.println(" ");
+        String[][] salaCineAsiento = new String[8][6];
+        
+        for (int i = 0; i < 8; i++) {
+            if (i == 0) {
+                System.out.println("  A1- B2- C3- D4- E5- F6");
+           }
+            for (int j = 0; j < 6; j++) {
+                if (j == 0) {
+                    System.out.print((i+1) + "");
+                }
+                salaCineAsiento[i][j] = " -  ";
+                System.out.print(salaCineAsiento[i][j]);
+            }
+            System.out.println(" ");
+        }
+        
+        c1.setPeli(p);
+        c1.setSalaCine(salaCineAsiento);
+        System.out.println("Ingrese el precio de la entrada al cine");
+        c1.setPrecioEntrada(leer.nextDouble());
+    }
+    
+    public void mostrarSalaCine() {
+        for (int i = 0; i < 8; i++) {
+            if (i == 0) {
+                System.out.println("  A1- B2- C3- D4- E5- F6");
+            }
+            
+            for (int j = 0; j < 6; j++) {
+                if (j == 0) {
+                    System.out.print((i + 1) + "");
+                }
+                System.out.print(c1.getSalaCine()[i][j]);
+            }
+            System.out.println(" ");
+        }
 
-        String[][] salaCine = new String[8][6];
+    }
+    
+    
+    
+    public int numAleatorio(int max, int min) {
+        int numAl = (int) (Math.random() * (max - min) + min);
+        return numAl;
+    }
+    
+    public void ubicarEspectadores() {
 
-        System.out.println(" ---------------------------------------- ");
-        System.out.println("******* Sala de Cine Vacio *******");
-        System.out.println("Referencia: V=Vacio; O=Ocupado");
+        cargarEspectadores();
+        int contador = 0;
+        int noEdad = 0;
+        int noDinero=0;
+        System.out.println("*** Ubicacion de Espectadores ***");
         System.out.println("");
 
-        for (int i = 7; i >= 0; i--) {
-            for (int j = 5; j >= 0; j--) {
-
-                switch (j) {
-                    case 5:
-                        salaCine[i][j] = (i + 1) + " A " + "V";
-                        break;
-                    case 4:
-                        salaCine[i][j] = (i + 1) + " B " + "V";
-                        break;
-                    case 3:
-                        salaCine[i][j] = (i + 1) + " C " + "V";
-                        break;
-                    case 2:
-                        salaCine[i][j] = (i + 1) + " D " + "V";
-                        break;
-                    case 1:
-                        salaCine[i][j] = (i + 1) + " E " + "V";
-                        break;
-                    case 0:
-                        salaCine[i][j] = (i + 1) + " F " + "V";
-                        break;
-                    default:
-                        System.out.println("error");
-                }
-                System.out.print("[ " + salaCine[i][j] + " ]");
-            }
-            System.out.println(" ");
-        }
-        System.out.println(" ---------------------------------------- ");
-        // ***** CARGAR 
-        c1.setSalaCine(salaCine);
-        c1.setPeli(p);
-        System.out.println("Ingrese Precio de la entrada la cine");
-        c1.setPrecioEntrada(leer.nextDouble());
-
-    }
-
-    public void ubicarEspectadores() {
-      HashSet <Integer> fila = new HashSet();
-        HashSet <Integer> columna = new HashSet();
-        
-        cargarEspectadores();
-        //c1 = new Cine();
-        String[][] salaCine = new String[8][6];
-        int contador = 0;
         for (Espectador aux : listaEspectadores) {
-            System.out.println(aux.toString());
-            if (aux.getDinero() > c1.getPrecioEntrada()) {
-                System.out.println("A la " + aux.getNombre() + " le alcanza el dinero ");
-                if (aux.getEdad() > p.getEdadMinima()) {
-                    System.out.println(aux.getNombre() + " Tiene la edad permitida");
-                    
-                    Integer f;
-                    Integer c;
+            if (contador>=48) {
+                System.out.println("NO HAY MAS LUGARES DIPONIBLES EN LA SALA");
+                System.out.println(" ");
+                break;
+            }
+            if (aux.getEdad() >= p.getEdadMinima()) {
+                System.out.println("");
+                System.out.println(aux.getNombre() + " tiene " + aux.getEdad() + " años");
+                if (aux.getDinero() >= c1.getPrecioEntrada()) {
+                    System.out.println(aux.getNombre() + " tiene $" + aux.getDinero());
+                    System.out.println(aux.getNombre() + " *** INGRESO PERMITIDO *** ");
+                    int f, c;
                     do {
-                        f = (int) (Math.random() * 8);
-                        c = (int) (Math.random() * 6);
+                        f = numAleatorio(8, 0);
+                        c = numAleatorio(6, 0);
+                        System.out.println("fila " + f);
+                        System.out.println("columna " + c);
+                    } while ((c1.getSalaCine()[f][c]).equals(" X  "));
 
-                        if (!fila.contains(f) && !columna.contains(c)) {
-                            System.out.println("fila " + f);
-                            System.out.println("columna " + c);
-                            fila.add(f);
-                            columna.add(c);
-                        }
-                    } while (!fila.contains(f));
-
-                   
-                    
-                                     
-
-                    for (int i = 7; i >= 0; i--) {
-                        for (int j = 5; j >= 0; j--) {
-
-                            switch (j) {
-                                case 5:
-                                    if ((i == f) && (j == c)) {
-                                        salaCine[i][j] = (i + 1) + "A " + "O";
-                                    } 
-                                    break;
-                                case 4:
-                                    if ((i == f) && (j == c)) {
-                                        salaCine[i][j] = (i + 1) + "B " + "O";
-                                    } 
-                                    break;
-                                case 3:
-                                    if ((i == f) && (j == c)) {
-                                        salaCine[i][j] = (i + 1) + "C " + "O";
-                                    }
-                                    break;
-                                case 2:
-                                    if ((i == f) && (j == c)) {
-                                        salaCine[i][j] = (i + 1) + "D " + "O";
-                                    } 
-                                    break;
-                                case 1:
-                                    if ((i == f) && (j == c)) {
-                                        salaCine[i][j] = (i + 1) + "E " + "O";
-                                    } 
-                                    break;
-                                case 0:
-                                    if ((i == f) && (j == c)) {
-                                        salaCine[i][j] = (i + 1) + "F " + "O";
-                                    } 
-                                    break;
-                                default:
-                                    System.out.println("error");
-                            }
-                            System.out.print("[ " + salaCine[i][j] + " ]");
-                        }
-                        System.out.println(" ");
-                    }
+                    c1.getSalaCine()[f][c] = " X  ";
+                    contador++;
+                    System.out.println("Ingresaron hasta ahora " + contador + " personas");
 
                 } else {
-                    System.out.println("Edad NO Permitida");
-                    contador++;
+                    System.out.println(aux.getNombre() + " No tiene el dinero Suficiente, tiene $" + aux.getDinero());
+                    System.out.println(aux.getNombre() + " *** NO PUEDE INGRESAR *** ");
+                    noDinero++;
+                    System.out.println("");
                 }
             } else {
-                System.out.println("A la " + aux.getNombre() + " NO le alcanza el dinero ");
-                contador++;
+                System.out.println(aux.getNombre() + " No tiene la edad Permitida, tiene " + aux.getEdad() + " años");
+                System.out.println(aux.getNombre() + " *** NO PUEDE INGRESAR *** ");
+                noEdad++;
+                System.out.println("");
             }
 
-            System.out.println(" ");
-
-            System.out.println(" ");
+            mostrarSalaCine();
+            System.out.println("");
         }
-        System.out.println("No ingresaron "+contador+" personas");
-        
-        for (Integer f : fila) {
-            System.out.println("filas "+f);
-        }
-        for (Integer c : columna) {
-            System.out.println("columnas "+c);
-        }
+        System.out.println(noEdad+" personas No ingresaron por No cumplir la Edad permitida");
+        System.out.println(noDinero+" personas no ingresaron por No tener el dinero suficiente");
     }
 
+
+    
+    
 }
      
      

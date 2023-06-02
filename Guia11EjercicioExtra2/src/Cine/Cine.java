@@ -28,6 +28,11 @@ public class Cine {
         
     }
 
+    public Cine(String[][] salaCine) {
+        this.salaCine = salaCine;
+    }
+    
+
     public Pelicula getPeli() {
         return peli;
     }
