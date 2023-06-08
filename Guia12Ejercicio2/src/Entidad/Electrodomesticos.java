@@ -120,7 +120,6 @@ public class Electrodomesticos {
             this.precio=1000d;
         } 
         
-        
         System.out.println("Ingrese el color del electrodomestico:");
         color=leer.next();
         comprobarColor(color);
@@ -174,8 +173,9 @@ public class Electrodomesticos {
                 break;
              case 'F':
                    this.precio = precio + 100d;
-                break;    
+                break; 
         }
+        
         if (peso < 19d) {
             this.precio = precio + 100d;
         } else if (peso <= 49d) {
@@ -185,6 +185,7 @@ public class Electrodomesticos {
         } else {
             this.precio = precio + 1000d;
         }
+        
     }
         
     @Override
