@@ -31,8 +31,10 @@ public class BarcoAMotor extends Barco{
 
     @Override
     public String toString() {
-        return "BarcoAMotor{" + "potenciaEnCV=" + potenciaEnCV + '}';
+        return super.toString()+"\nPotencia en CV: "+ potenciaEnCV+"\n"; //To change body of generated methods, choose Tools | Templates.
     }
+
+ 
 
     
 
@@ -41,18 +43,12 @@ public class BarcoAMotor extends Barco{
         System.out.println(" ***** ALQUILER DE BARCO A MOTOR  *****");
         
         super.alquiler(); 
-        
-        System.out.println("Matricula: "+matricula);
-        System.out.println("Metros de Eslora:"+eslora);
-        
-        potenciaEnCV=100;
-        System.out.println("Potencia del Barco a Motor (en CV) "+potenciaEnCV);
-        
+        potenciaEnCV*=1000;
         System.out.println("Adicional por Potencia del Barco a Motor (en CV)"+potenciaEnCV);
         alquiler+= potenciaEnCV;
         
         System.out.println("*******************************************************");
-        System.out.println("El precio FINAL del alquiler del BARCO A MOTOR es: $"+alquiler);
+        System.out.println("El precio FINAL de alquiler de BARCO A MOTOR es: $"+alquiler);
         System.out.println("*******************************************************");
         System.out.println("");
     }

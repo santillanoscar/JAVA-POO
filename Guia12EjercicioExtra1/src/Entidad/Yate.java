@@ -43,9 +43,11 @@ public class Yate extends Barco{
 
     @Override
     public String toString() {
-        return "Yate{" + "nroCamarotes=" + nroCamarotes + ", potenciaEnCV=" + potenciaEnCV + '}';
+        return super.toString()+"\nPotencia en CV: "+potenciaEnCV+"\nCamarotes: "+nroCamarotes+"\n"; 
+        
     }
 
+    
        
   
 
@@ -55,21 +57,13 @@ public class Yate extends Barco{
         System.out.println(" ***** ALQUILER DE YATE *****");
         
         super.alquiler(); 
-      
-        System.out.println("Matricula: "+matricula);
-        System.out.println("Metros de Eslora:"+eslora);
-        
-        potenciaEnCV=500;
-        System.out.println("Potencia del Barco a Motor (en CV) "+potenciaEnCV);
-       
-        nroCamarotes= 2;
-        System.out.println("Cantidad de Camarotes: "+nroCamarotes);
-        
-        System.out.println("Adicional por Potencia del YATE (en CV) + Camarotes: "+((potenciaEnCV)+(nroCamarotes)));
+        potenciaEnCV*=1000;
+        nroCamarotes*=1000;
+        System.out.println("Adicional por Potencia del YATE (en CV) + Camarotes: "+((potenciaEnCV+nroCamarotes)));
         alquiler+= potenciaEnCV + nroCamarotes;
         
         System.out.println("*******************************************************");
-        System.out.println("El precio FINAL del alquiler del YATE es: $"+alquiler);
+        System.out.println("El precio FINAL de alquiler de YATE DE LUJO es: $"+alquiler);
         System.out.println("*******************************************************");
         System.out.println("");
         

@@ -64,9 +64,11 @@ public class Barco {
         this.anio = anio;
     }
 
-    @Override
+   
     public String toString() {
-        return "Barco{" + "matricula=" + matricula + ", eslora=" + eslora + ", anio=" + anio + '}';
+        return "Matricula   = " + matricula + "\n"
+                + "Eslora   = " + eslora + "\n"
+                + "Año Fab. = " + anio ;
     }
 
   

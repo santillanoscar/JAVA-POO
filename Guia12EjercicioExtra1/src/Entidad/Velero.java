@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 /**
  * Un Barco se caracteriza por: su matrícula, su eslora en metros y año de fabricación.
-Sin embargo, se pretende diferenciar la información de algunos tipos de barcos especiales:
  *Sin embargo, se pretende diferenciar la información de algunos tipos de barcos especiales:
 • Número de mástiles para veleros.
 • Potencia en CV para barcos a motor.
@@ -47,8 +46,16 @@ public class Velero extends Barco{
 
     @Override
     public String toString() {
-        return "Velero{" + "mastiles=" + mastiles + ", leer=" + leer + '}';
+        
+         return super.toString()+ "\n"
+                + "Mastiles= " + mastiles+"\n" ;
     }
+
+    
+
+    
+
+   
 
     
 
@@ -64,18 +71,13 @@ public class Velero extends Barco{
         System.out.println(" ***** ALQUILER DE VELERO *****");
         
         super.alquiler();
-        
-        System.out.println("Matricula: "+matricula);
-        System.out.println("Metros de Eslora:"+eslora);
-        System.out.println("Numero de mastiles del Velero: "+ mastiles);
-        
-        
+        mastiles*=1000;
         System.out.println("Adicional por cantidad de mastiles: $"+mastiles);
         alquiler+= mastiles;
         
         System.out.println("*******************************************************");
-        System.out.println("El precio FINAL del alquiler del VELERO es: $"+alquiler);
-        System.out.println("*******************************************************");
+        System.out.println("El precio FINAL de alquiler de VELERO es: $"+alquiler);
+        System.out.println("*******************************************************\n");
     }
 
     
