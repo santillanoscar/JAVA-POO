@@ -44,7 +44,7 @@ public class BarcoAMotor extends Barco{
         
         super.alquiler(); 
         potenciaEnCV*=1000;
-        System.out.println("Adicional por Potencia del Barco a Motor (en CV)"+potenciaEnCV);
+        System.out.println("Adicional por Potencia del Barco a Motor (en CV) $"+potenciaEnCV);
         alquiler+= potenciaEnCV;
         
         System.out.println("*******************************************************");
