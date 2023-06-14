@@ -56,7 +56,7 @@ public class HotelPadre {
 
     @Override
     public String toString() {
-        return "HotelPadre{" + "nombre=" + nombre + ", direccion=" + direccion + ", localidad=" + localidad + ", Gerente=" + gerente + '}';
+        return "** Datos Hotel ** " + "\nnombre= " + nombre + "\ndireccion= " + direccion + "\nlocalidad= " + localidad + "\nGerente= " + gerente ;
     }
     
     

@@ -38,7 +38,7 @@ public class ExtraHotelero extends HotelPadre{
 
     @Override
     public String toString() {
-        return super.toString()+"ExtraHotelero{" + "privado=" + privado + ", metCuadrados=" + metCuadrados + '}';
+        return super.toString()+"\n*** ExtraHotelero" + "\nEs privado? = " + privado + "\nmetros Cuadrados=" + metCuadrados;
     }
     
     
