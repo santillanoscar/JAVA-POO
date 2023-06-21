@@ -29,7 +29,7 @@ public class ServicioPersona {
 
     public boolean esMayor(Persona p1) {
         return (p1.getEdad() > 17);
-    } 
+    }
 
     public Persona crearPersona() {
         System.out.println("Ingrese nombre de la persona: ");
@@ -37,21 +37,22 @@ public class ServicioPersona {
         System.out.println("Ingrese la edad: ");
         int edad = leer.nextInt();
         String sexo;
-        do {
+
         System.out.println("Ingrese el sexo (M/F/O): ");
-        sexo=leer.next().toUpperCase();
-            if (sexo!="M" || sexo!="F" || sexo!="O") {
+        do {
+            sexo = leer.next().toUpperCase();
+            if (!sexo.equalsIgnoreCase("M") && !sexo.equalsIgnoreCase("F") && !sexo.equalsIgnoreCase("O")) {
                 System.out.println("Incorrecto!!!");
                 System.out.println("Ingrese sexo nuevamente");
-                 sexo=leer.next().toUpperCase();
             }
-        } while (sexo!="M" || sexo!="F" || sexo!="O");
-        System.out.println("Ingrese el peso en Kg");        
+        } while (!sexo.equalsIgnoreCase("M") && !sexo.equalsIgnoreCase("F") && !sexo.equalsIgnoreCase("O"));
+
+        System.out.println("Ingrese el peso en Kg");
         double peso = leer.nextDouble();
         System.out.println("ingrese la altura en cm");
-        double altura= leer.nextDouble();
-        
-        return new Persona(nombre,edad,sexo,peso,altura);
+        double altura = leer.nextDouble();
+
+        return new Persona(nombre, edad, sexo, peso, altura);
     }
      
 }
